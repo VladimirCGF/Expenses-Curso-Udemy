@@ -48,10 +48,41 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           Column(
-            children:
-                _transactions.map((tr) {
-                  return Card(child: Text(tr.title));
-                }).toList(),
+            children: _transactions.map((tr) {
+              return Card(
+                child: Row(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 15,
+                        vertical: 10,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.purple,
+                          width: 2,
+                        ),
+                      ),
+                      padding: const EdgeInsets.all(10),
+                      child: Text(
+                        tr.value.toString(),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.purple,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        Text(tr.title),
+                        Text(tr.date.toString()),
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            }).toList(),
           ),
         ],
       ),
